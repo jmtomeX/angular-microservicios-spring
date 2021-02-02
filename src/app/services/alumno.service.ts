@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { AppSettings } from '../config/app-settings';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -27,6 +27,22 @@ export class AlumnoService {
     //   map(alumnos => alumnos as Alumno[]) // casteado
     // );
   }
+
+  public listarPaginas(page: string, size: string): Observable<any> {
+   // cada vez que se crea una instancia la instacia original se pierde, por lo que hay llamarla de forma
+   // encadenada con set en base a la misma instancia
+    const params = new HttpParams()
+    .set('page', page)
+    .set('size', size);
+    // seria lo mismo
+    /*
+    let params = new HttpParams();
+    params = params.set('page', page);
+    params = params.set('size', size);
+    */
+    return this.http.get<any>(`${this.baseEndPoint}/pagina`, { params });
+  }
+  
   public ver(id: number): Observable<Alumno[]> {
     return this.http.get<Alumno[]>(`${this.baseEndPoint}/${id}`);
   }
