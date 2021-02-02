@@ -42,7 +42,6 @@ export class AlumnoService {
     */
     return this.http.get<any>(`${this.baseEndPoint}/pagina`, { params });
   }
-  
   public ver(id: number): Observable<Alumno[]> {
     return this.http.get<Alumno[]>(`${this.baseEndPoint}/${id}`);
   }
