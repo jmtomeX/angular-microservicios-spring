@@ -15,7 +15,6 @@ export class AlumnosComponent implements OnInit {
   ngOnInit(): void {
     // retorna un string reactivo asíncrono
     this.service.listar().subscribe(alumnos => this.alumnos = alumnos );
-
   }
 
 }
