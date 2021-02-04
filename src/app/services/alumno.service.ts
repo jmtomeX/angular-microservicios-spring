@@ -29,11 +29,11 @@ export class AlumnoService {
   }
 
   public listarPaginas(page: string, size: string): Observable<any> {
-   // cada vez que se crea una instancia la instacia original se pierde, por lo que hay llamarla de forma
-   // encadenada con set en base a la misma instancia
+    // cada vez que se crea una instancia la instacia original se pierde, por lo que hay llamarla de forma
+    // encadenada con set en base a la misma instancia
     const params = new HttpParams()
-    .set('page', page)
-    .set('size', size);
+      .set('page', page)
+      .set('size', size);
     // seria lo mismo
     /*
     let params = new HttpParams();
@@ -46,7 +46,8 @@ export class AlumnoService {
     return this.http.get<Alumno[]>(`${this.baseEndPoint}/${id}`);
   }
   public crear(alumno: Alumno): Observable<Alumno> {
-    return this.http.post<Alumno>(this.baseEndPoint, alumno, { headers: this.cabeceras });
+    return this.http.post<Alumno>(this.baseEndPoint, alumno,
+      { headers: this.cabeceras });
   }
   public editar(alumno: Alumno): Observable<Alumno> {
     return this.http.put<Alumno>(`${this.baseEndPoint}/${alumno.id}`,

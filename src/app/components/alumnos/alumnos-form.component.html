@@ -6,18 +6,18 @@
         <form>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input id="nombre" class="form-control" type="text" name="nombre">
+                <input id="nombre" class="form-control" type="text" name="nombre" [(ngModel)]="alumno.nombre">
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido</label>
-                <input id="apellido" class="form-control" type="text" name="apellido">
+                <input id="apellido" class="form-control" type="text" name="apellido" [(ngModel)]="alumno.apellido">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" class="form-control" type="text" name="email">
+                <input id="email" class="form-control" type="text" name="email" [(ngModel)]="alumno.email">
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-primary">Enviar</button>
+                <button type="button" class="btn btn-primary" (click)="crear()">Enviar</button>
             </div>
         </form>
     </div>
