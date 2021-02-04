@@ -7,14 +7,23 @@
             <div class="form-group">
                 <label for="nombre">Nombre</label>
                 <input id="nombre" class="form-control" type="text" name="nombre" [(ngModel)]="alumno.nombre">
+                <div class="alert alert-danger mt-2" *ngIf="error && error.nombre">
+                    {{error.nombre}}
+                </div>
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido</label>
                 <input id="apellido" class="form-control" type="text" name="apellido" [(ngModel)]="alumno.apellido">
+                <div class="alert alert-danger mt-2" *ngIf="error && error.apellido">
+                    {{error.apellido}}
+                </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
                 <input id="email" class="form-control" type="text" name="email" [(ngModel)]="alumno.email">
+                <div class="alert alert-danger mt-2" *ngIf="error && error.email">
+                    {{error.email}}
+                </div>
             </div>
             <div class="form-group">
                 <button type="button" class="btn btn-primary" (click)="crear()">Enviar</button>

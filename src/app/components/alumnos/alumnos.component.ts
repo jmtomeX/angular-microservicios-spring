@@ -10,11 +10,13 @@ import { Alumno } from '../../models/alumno';
 export class AlumnosComponent implements OnInit {
   titulo = 'Listado de Alumnos';
   alumnos: Alumno[];
+  totalAlumnos: number;
   constructor(private service: AlumnoService) { }
 
   ngOnInit(): void {
     // retorna un string reactivo asíncrono
     this.service.listar().subscribe(alumnos => this.alumnos = alumnos );
+   // this.totalAlumnos = this.alumnos.length;
   }
 
 }

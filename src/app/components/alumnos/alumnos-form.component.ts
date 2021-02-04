@@ -12,6 +12,8 @@ import Swal from 'sweetalert2';
 })
 export class AlumnosFormComponent implements OnInit {
   alumno: Alumno = new Alumno();
+
+  error: any;
   titulo = 'Crear Alumnos';
   constructor(private service: AlumnoService, private router: Router) { }
   ngOnInit(): void {
@@ -21,8 +23,12 @@ export class AlumnosFormComponent implements OnInit {
     this.service.crear(this.alumno).subscribe(alumno => {
       console.log(alumno);
       Swal.fire('Formulario de contacto', `Alumno ${alumno.nombre} creado correctamente.`, 'success');
-     // alert(`Alumno ${alumno.nombre} creado correctamente.`);
+      // alert(`Alumno ${alumno.nombre} creado correctamente.`);
       this.router.navigate(['/alumnos']);
+    }, err => {
+      if (err.status === 400) { // error asignado a la validación
+        this.error = err.error;
+      }
     });
   }
 
