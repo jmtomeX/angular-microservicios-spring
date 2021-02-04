@@ -17,7 +17,6 @@ export class AlumnosComponent implements OnInit {
     // retorna un string reactivo asíncrono
     this.service.listar().subscribe(alumnos => {
       this.alumnos = alumnos;
-      this.totalAlumnos = alumnos.length;
     }
     );
   }
