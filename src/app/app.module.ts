@@ -9,13 +9,17 @@ import { AlumnosComponent } from './components/alumnos/alumnos.component';
 import { ExamenesComponent } from './components/examenes/examenes.component';
 import { CursosComponent } from './components/cursos/cursos.component';
 import { LayoutModule } from './layout/layout.module';
+import { AlumnosFormComponent } from './components/alumnos/alumnos-form.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AlumnosComponent,
     ExamenesComponent,
-    CursosComponent
+    CursosComponent,
+    AlumnosFormComponent,
+
   ],
   imports: [
     BrowserModule,
