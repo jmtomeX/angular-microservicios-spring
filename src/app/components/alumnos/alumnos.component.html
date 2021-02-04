@@ -10,6 +10,7 @@
                     <th>Apellido</th>
                     <th>Email</th>
                     <th>Fecha creación</th>
+                    <th>Editar</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,6 +20,9 @@
                     <td>{{alumno.apellido | uppercase}} </td>
                     <td>{{alumno.email}}</td>
                     <td>{{alumno.createAt | date: 'short'}}</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm" [routerLink]="['/alumnos/form', alumno.id]">Editar</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

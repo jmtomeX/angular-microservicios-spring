@@ -42,8 +42,8 @@ export class AlumnoService {
     */
     return this.http.get<any>(`${this.baseEndPoint}/pagina`, { params });
   }
-  public ver(id: number): Observable<Alumno[]> {
-    return this.http.get<Alumno[]>(`${this.baseEndPoint}/${id}`);
+  public ver(id: number): Observable<Alumno> {
+    return this.http.get<Alumno>(`${this.baseEndPoint}/${id}`);
   }
   public crear(alumno: Alumno): Observable<Alumno> {
     return this.http.post<Alumno>(this.baseEndPoint, alumno,
