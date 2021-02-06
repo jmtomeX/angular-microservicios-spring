@@ -34,6 +34,8 @@
                 </tr>
             </tbody>
         </table>
+        <mat-paginator [length]="totalRegistros" [pageSize]="totalPorPagina" [pageIndex]="paginaActual" [pageSizeOptions]="pageSizeOptions" (page)="paginar($event)" showFirstLastButtons>
+        </mat-paginator>
 
         <h5 class="card-title">Notas</h5>
         <p class="card-text">Alumnos inscritos en el centro o que han realizado un curso anteriormente.</p>

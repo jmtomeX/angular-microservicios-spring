@@ -11,6 +11,9 @@ import { CursosComponent } from './components/cursos/cursos.component';
 import { LayoutModule } from './layout/layout.module';
 import { AlumnosFormComponent } from './components/alumnos/alumnos-form.component';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -19,8 +22,7 @@ import { FormsModule } from '@angular/forms';
     AlumnosComponent,
     ExamenesComponent,
     CursosComponent,
-    AlumnosFormComponent,
-
+    AlumnosFormComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     LayoutModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

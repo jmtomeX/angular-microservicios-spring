@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
+import {PageEvent } from '@angular/material/paginator';
 
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { Alumno } from '../../models/alumno';
@@ -12,15 +13,34 @@ import { Alumno } from '../../models/alumno';
 export class AlumnosComponent implements OnInit {
   titulo = 'Listado de Alumnos';
   alumnos: Alumno[] = [];
+  totalRegistros = 0;
+  totalPorPagina = 5;
+  paginaActual = 0;
+  pageSizeOptions: number[] = [5, 10, 20, 50];
+
   totalAlumnos: number;
   constructor(private service: AlumnoService) { }
 
   ngOnInit(): void {
+    this.calcularRangosPaginacion();
+  }
+  paginar(event: PageEvent): void {
+    this.paginaActual = event.pageIndex;
+    this.totalPorPagina = event.pageSize;
+    this.calcularRangosPaginacion();
+  }
+
+  // tslint:disable-next-line:typedef
+  private calcularRangosPaginacion() {
+    const paginaActual = this.paginaActual.toString();
+    const totalPorPagina = this.totalPorPagina.toString();
     // retorna un string reactivo asíncrono
-    this.service.listar().subscribe(alumnos => {
-      this.alumnos = alumnos;
-    }
-    );
+    this.service.listarPaginas(paginaActual, totalPorPagina)
+      .subscribe(p => {
+        this.alumnos = p.content as Alumno[]; // se pasa a un array de alumnos
+        this.totalRegistros = p.totalElements as number;
+      }
+      );
   }
 
   public eliminar(alumno: Alumno): void {
@@ -35,7 +55,8 @@ export class AlumnosComponent implements OnInit {
       if (result.isConfirmed) {
         this.service.eliminar(alumno.id).subscribe(() => {
           // filtra los alumnos y no se añade el que eliminamos
-          this.alumnos = this.alumnos.filter(a => a !== alumno);
+          // this.alumnos = this.alumnos.filter(a => a !== alumno);
+          this.calcularRangosPaginacion();
         });
         Swal.fire(
           `${alumno.nombre}`,
