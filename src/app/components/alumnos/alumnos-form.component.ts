@@ -21,7 +21,7 @@ export class AlumnosFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute) { }
   ngOnInit(): void {
-    // recogemos el id 
+    // recogemos el id
     this.route.paramMap.subscribe(params => {
       const id: number = +params.get('id'); // con + castea a number
       if (id) {
