@@ -45,7 +45,7 @@ export class AlumnosComponent implements OnInit {
         Swal.fire(
           'Usuario no eliminado.',
           '',
-          'info');
+          'error');
       }
     });
   }
