@@ -4,6 +4,7 @@ import {MatPaginator, PageEvent } from '@angular/material/paginator';
 
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { Alumno } from '../../models/alumno';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -20,7 +21,7 @@ export class AlumnosComponent implements OnInit {
 
   // cambiar texto del paginador
   @ViewChild(MatPaginator) paginator;
-// webpack:///node_modules/@angular/material/__ivy_ngcc__/fesm2015/paginator.js
+
   totalAlumnos: number;
   constructor(private service: AlumnoService) { }
 

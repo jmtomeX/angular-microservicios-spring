@@ -1,5 +1,6 @@
 import { Examen } from './examen';
-export class Pregunta {
+import { Generic } from './generic';
+export class Pregunta implements Generic{
     id: number;
     nombre: string;
     examen: Examen;
