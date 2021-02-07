@@ -8,7 +8,6 @@ export abstract class CommonService<Model extends Generic> {
 
   protected baseEndPoint: string;
   protected cabeceras: HttpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
-
   constructor(protected http: HttpClient) {
   }
 

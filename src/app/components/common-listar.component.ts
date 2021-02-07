@@ -1,14 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Directive, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatPaginator, PageEvent } from '@angular/material/paginator';
 
-import { AlumnoService } from 'src/app/services/alumno.service';
 import { CommonService } from '../services/common.service';
 import { Generic } from '../models/generic';
-
+@Directive() // solo para clases padres, temas de versiones
+// tslint:disable-next-line:directive-class-suffix
 export abstract class CommonListarComponent<Model extends Generic, S extends CommonService<Model>> implements OnInit {
   titulo: string;
-  lista: Model[] = [];
+  lista: Model[];
   totalRegistros = 0;
   totalPorPagina = 5;
   paginaActual = 0;
@@ -16,7 +16,7 @@ export abstract class CommonListarComponent<Model extends Generic, S extends Com
   protected nombreModel: string;
 
   // cambiar texto del paginador
-  @ViewChild(MatPaginator) paginator;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   totalAlumnos: number;
   constructor(protected service: S) { }
