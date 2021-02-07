@@ -26,18 +26,19 @@
                     <td>{{alumno.email}}</td>
                     <td>{{alumno.createAt | date: 'short'}}</td>
                     <td>
-                        <button class="btn btn-secondary btn-sm" [routerLink]="['/alumnos/form', alumno.id]">Editar</button>
+                        <a class="" [routerLink]="['/alumnos/form', alumno.id]">
+                            <mat-icon class="primary"> border_color</mat-icon>
+                        </a>
                     </td>
                     <td>
-                        <button class="btn btn-danger btn-sm" (click)="eliminar(alumno)">Eliminar</button>
+
+                        <a (click)="eliminar(alumno)">
+                            <mat-icon class="text-danger">delete</mat-icon>
+                        </a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <mat-paginator [length]="totalRegistros" [pageSize]="totalPorPagina" [pageIndex]="paginaActual" [pageSizeOptions]="pageSizeOptions" (page)="paginar($event)" showFirstLastButtons>
+        <mat-paginator class="float-left mx-2" [length]="totalRegistros" [pageSize]="totalPorPagina" [pageIndex]="paginaActual" [pageSizeOptions]="pageSizeOptions" (page)="paginar($event)" showFirstLastButtons>
         </mat-paginator>
-
-        <h5 class="card-title">Notas</h5>
-        <p class="card-text">Alumnos inscritos en el centro o que han realizado un curso anteriormente.</p>
-        <p class="card-text">Total alumnos {{alumnos.length}}</p>
     </div>

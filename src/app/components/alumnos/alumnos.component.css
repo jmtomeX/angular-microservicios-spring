@@ -1,0 +1,11 @@
+.danger-icon {
+    color: rgb(206, 8, 8);
+}
+
+.edit-icon {
+    color: rgb(8, 84, 206);
+}
+
+a:hover {
+    cursor: pointer;
+}

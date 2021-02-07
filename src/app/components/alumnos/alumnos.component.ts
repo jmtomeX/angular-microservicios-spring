@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
-import {PageEvent } from '@angular/material/paginator';
+import {MatPaginator, PageEvent } from '@angular/material/paginator';
 
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { Alumno } from '../../models/alumno';
@@ -18,6 +18,9 @@ export class AlumnosComponent implements OnInit {
   paginaActual = 0;
   pageSizeOptions: number[] = [5, 10, 20, 50];
 
+  // cambiar texto del paginador
+  @ViewChild(MatPaginator) paginator;
+// webpack:///node_modules/@angular/material/__ivy_ngcc__/fesm2015/paginator.js
   totalAlumnos: number;
   constructor(private service: AlumnoService) { }
 
@@ -32,13 +35,17 @@ export class AlumnosComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   private calcularRangosPaginacion() {
-    const paginaActual = this.paginaActual.toString();
-    const totalPorPagina = this.totalPorPagina.toString();
     // retorna un string reactivo asíncrono
-    this.service.listarPaginas(paginaActual, totalPorPagina)
+    this.service.listarPaginas(this.paginaActual.toString(), this.totalPorPagina.toString())
       .subscribe(p => {
         this.alumnos = p.content as Alumno[]; // se pasa a un array de alumnos
         this.totalRegistros = p.totalElements as number;
+        // traducir paginación
+        this.paginator._intl.itemsPerPageLabel = 'Registros por página';
+        this.paginator._intl.lastPageLabel = 'Última página';
+        this.paginator._intl.nextPageLabel = 'Siguiente página';
+        this.paginator._intl.firstPageLabel = 'Primera página';
+        this.paginator._intl.previousPageLabel = 'Anterior página';
       }
       );
   }
