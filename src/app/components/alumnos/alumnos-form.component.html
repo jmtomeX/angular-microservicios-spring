@@ -6,7 +6,7 @@
         <form>
             <div class="form-group">
                 <label for="nombre">Nombre</label>
-                <input id="nombre" class="form-control" type="text" name="nombre" [(ngModel)]="alumno.nombre">
+                <input id="nombre" class="form-control" type="text" name="nombre" [(ngModel)]="model.nombre">
                 <!-- que el error exista o distinto de null y error.nmbre también exista -->
                 <div class="alert alert-danger mt-2" *ngIf="error?.nombre">
                     {{error.nombre}}
@@ -14,21 +14,33 @@
             </div>
             <div class="form-group">
                 <label for="apellido">Apellido</label>
-                <input id="apellido" class="form-control" type="text" name="apellido" [(ngModel)]="alumno.apellido">
+                <input id="apellido" class="form-control" type="text" name="apellido" [(ngModel)]="model.apellido">
                 <div class="alert alert-danger mt-2" *ngIf="error?.apellido">
                     {{error.apellido}}
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" class="form-control" type="text" name="email" [(ngModel)]="alumno.email">
+                <input id="email" class="form-control" type="text" name="email" [(ngModel)]="model.email">
                 <div class="alert alert-danger mt-2" *ngIf="error && error.email">
                     {{error.email}}
                 </div>
             </div>
+
             <div class="form-group">
-                <button type="button" class="btn btn-primary" (click)="alumno.id? editar(): crear()">
-                   {{alumno.id? 'Editar': 'Enviar'}} </button>
+                <div class="custom-file">
+                    <input (change)="seleccionarFoto($event)" type="file" class="custom-file-input" id="validatedCustomFile">
+                    <label class="custom-file-label" for="validatedCustomFile">Cargar foto...</label>
+                    <div class="invalid-feedback">Example invalid custom file feedback</div>
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" (click)="model.id? editar(): crear()">
+                   {{model.id? 'Editar': 'Enviar'}} </button>
             </div>
         </form>
     </div>

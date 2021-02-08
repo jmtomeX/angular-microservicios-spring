@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { AlumnoService } from 'src/app/services/alumno.service';
 import { Alumno } from '../../models/alumno';
-import { CommonListarComponent } from '../common-listar.component';
+import { CommonListarComponent } from '../common/common-listar.component';
 
 @Component({
   selector: 'app-alumnos',

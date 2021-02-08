@@ -2,8 +2,8 @@ import { Component, Directive, OnInit, ViewChild } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatPaginator, PageEvent } from '@angular/material/paginator';
 
-import { CommonService } from '../services/common.service';
-import { Generic } from '../models/generic';
+import { CommonService } from '../../services/common.service';
+import { Generic } from '../../models/generic';
 @Directive() // solo para clases padres, temas de versiones
 // tslint:disable-next-line:directive-class-suffix
 export abstract class CommonListarComponent<Model extends Generic, S extends CommonService<Model>> implements OnInit {
